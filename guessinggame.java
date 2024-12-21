@@ -2,24 +2,38 @@ import java.util.Scanner;
 
 public class guessinggame {
     public static void main(String[] args) {
+        // Create scanner for reading input
         Scanner scanner = new Scanner(System.in);
-        String correctName = "Tommi";  // The name to guess
-        int guesses = 0;  // Counter for number of guesses
         
-        while(true) {
+        // Set the name that needs to be guessed
+        String secretName = "bhuvi";
+        
+        // Create a counter for guesses
+        int numberOfGuesses = 0;
+        
+        // Game continues until correct guess
+        boolean gameRunning = true;
+        
+        while(gameRunning) {
+            // Ask for a guess
             System.out.println("Please, guess my name.");
-            String guess = scanner.nextLine();
-            guesses++;
+            String userGuess = scanner.nextLine();
+            numberOfGuesses = numberOfGuesses + 1;
             
-            if(guess.equals(correctName)) {
+            // Check if guess is correct
+            if(userGuess.equals(secretName)) {
                 System.out.println("Congratulations!");
-                System.out.println("Guesses: " + guesses);
-                break;
-            } else {
+                System.out.println("Guesses: " + numberOfGuesses);
+                gameRunning = false;
+            } 
+            // If guess is wrong
+            else {
+                System.out.println("Wrong guess!");
                 System.out.println("Do you want to quit (y/n) ?");
-                String quit = scanner.nextLine();
-                if(quit.equals("y")) {
-                    break;
+                String quitAnswer = scanner.nextLine();
+                
+                if(quitAnswer.equals("y")) {
+                    gameRunning = false;
                 }
             }
         }
